@@ -6,20 +6,22 @@ const initialBreeds = [
   { id: 2, name: "Husky" },
 ];
 
-const Select = () => {
-  const [breeds, setBreeds] = useState(initialBreeds);
-
+const Select = ({updateDog}) => {
+  
+    const [breeds, setBreeds] = useState(initialBreeds);
+  
   const updateBreeds = () => {
     getBreeds().then((newBreeds) => {
       setBreeds(newBreeds);
     });
   };
+
   useEffect(() => {
     updateBreeds();
   }, []);
 
   return (
-    <select onChange = {() => alert("change")}>
+    <select onChange = {(e) => updateDog(e.target.value)}>
       {breeds.map((breed) => (
         <option value={breed.id} key={breed.id}>
           {" "}
