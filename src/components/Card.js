@@ -1,11 +1,11 @@
 import React from "react";
+import Spinner from "./Spinner";
 
-const Card = ({ dog, updateDog, loading }) => {
-  
-  if (loading) return <h1>Loading...</h1>
+const Card = ({ dog, updateDog, loading, error }) => {
+  if (loading) return <Spinner />;
 
   return (
-    <div className="card">
+    <div className="card bounce">
       <img
         src={dog.image}
         alt="dog image"
